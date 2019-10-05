@@ -1,0 +1,48 @@
+Filename - Selenium Notes.txt
+
+
+What is implicit wait?
+Implicit wait is a type of wait, which puts a wait time between the execution of two steps. 
+The default wait time between two steps is zero.
+Implicit wait allows the web driver to wait for the completion of a step or loading of an an element.
+
+An implicit wait is to tell WebDriver to poll the DOM for a certain amount of time when trying to find an element 
+or elements if they are not immediately available. The default setting is 0. Once set, the implicit wait is set 
+for the life of the WebDriver object instance.
+
+
+What is Explicit Wait?
+An explicit wait is a code that you define to wait for a certain condition to occur before proceeding further in 
+the code. WebDriverWait by default calls the ExpectedCondition every 500 milliseconds until it returns successfully.
+
+Explicit wait is a type of wait (applied through code piece), which is used to stop the execution till a 
+specific condition is true.
+We use WebDriverWait and ExpectedCondition classes of Selenium web driver to implement explicit wait.
+
+
+//Explict waits syntax
+ WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+IWebElement myDynamicElement = wait.Until<IWebElement>(d => d.FindElement(By.Id("someDynamicElement")));
+
+This waits up to 10 seconds before throwing a TimeoutException or if it finds the element will return it 
+in 0 - 10 seconds. WebDriverWait by default calls the ExpectedCondition every 500 milliseconds until it returns 
+successfully. A successful return value for the ExpectedCondition function type is a Boolean value of true, or 
+a non-null object.
+
+//Implicit waits syntax
+driver.Manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+WebElement myDynamicElement = driver.findElement(By.id("myDynamicElement"));
+
+An implicit wait is to tell WebDriver to poll the DOM for a certain amount of time when trying to 
+find an element or elements if they are not immediately available. The default setting is 0. Once set, 
+the implicit wait is set for the life of the WebDriver object instance.
+
+
+
+
+
+
+
+
+
+
