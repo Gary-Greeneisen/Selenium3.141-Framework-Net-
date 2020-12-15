@@ -16,24 +16,32 @@ using SeleniumExtras.PageObjects;
 
 namespace AcceptanceTests.PageObjects
 {
-    public partial class GooglePageObjectModel
+    public partial class PageFactoryModel
     {
+        //
+        //What is Page Factory
+        //Page Factory, an extension to Page Objects, is primarily used for initialization of the web elements
+        //defined in the page classes(or page objects). Web elements used with Page Objects have to be initialized
+        //before they can be used further and Page Factory simplifies the initialization with the initElements method.
+        //
+
+
         //constructor 
-        public GooglePageObjectModel()
+        public PageFactoryModel()
         {
 
         }
 
         //constructor 
         //PageFactory.InitElements() is used to [FindsBy] annotation to work.
-        public GooglePageObjectModel(IWebDriver driver)
+        public PageFactoryModel(IWebDriver browser)
         {
-            PageFactory.InitElements(driver, this);
+            PageFactory.InitElements(browser, this);
         }
 
-        public void InitPageObject(IWebDriver driver)
+        public void InitPageObject(IWebDriver browser)
         {
-            PageFactory.InitElements(driver, this);
+            PageFactory.InitElements(browser, this);
         }
 
         // Page Factory [FindsBy] annotation finds the web elements on the homepage.

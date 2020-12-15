@@ -210,7 +210,7 @@ namespace AcceptanceTests.PageObjects
                     //None        3       Does not wait for pages to load, returning immediately.
                     //********************************************************************************************
                     var edgeOptions = new EdgeOptions();
-                    edgeOptions.PageLoadStrategy = PageLoadStrategy.Eager;
+                    edgeOptions.PageLoadStrategy = PageLoadStrategy.Normal;
 
                     //location of Edge driver
                     //IWebDriver browser = new EdgeDriver(driverDir);  

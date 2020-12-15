@@ -15,7 +15,7 @@ using AcceptanceTests.Common.Library;
 
 namespace AcceptanceTests.Features.NUnit_Tests
 {
-    class NUnitTest
+    class TestDrivers
     {
 
         [SetUp]
@@ -25,7 +25,7 @@ namespace AcceptanceTests.Features.NUnit_Tests
         }
 
         [Test]
-        public void TestDrivers()
+        public void TestBrowserDrivers()
         {
             TestChromeDriverClass TestChrome = new TestChromeDriverClass();
             TestChrome.TestChromeDriver();
@@ -42,27 +42,27 @@ namespace AcceptanceTests.Features.NUnit_Tests
         }
 
         [Test]
-        public void TestGooglePageObjects()
+        public void TestPageFactoryModel()
         {
-            //To test Google Page Objects need to do the following
-            //Create an instance of Google
+            //To test browers using Page Objects need to do the following
+            //Create an instance of the browser (Chrome, Firefox, Edge, IE)
             //Call the the method public GooglePageObjectModel(IWebDriver driver) to initialize the [FindsBy] annotation to work.
             //Call the method public void SearchText(string text) with text to search
 
             //*****************************************************************
             //The loginPage Page Object uses the app.config file
-            // to set which browser to use (Chrome,Firefox,Edge,IE)
+            // Update app.config to set which browser to use (Chrome,Firefox,Edge,IE)
             //
-            //Create an instance of Google
+            //Create an instance of the browser (Chrome, Firefox, Edge, IE)
             TestRunnerInterface.Map.loginPage.LaunchBrowser("https://www.google.com/");
 
             //initialize the [FindsBy] annotation to work.
             IWebDriver browser = TestRunnerInterface.Map.loginPage.browser;
-            TestRunnerInterface.Map.googlePageObject.InitPageObject(browser);
+            TestRunnerInterface.Map.pageFactoryModel.InitPageObject(browser);
 
 
             //text to search
-            TestRunnerInterface.Map.googlePageObject.SearchText("Books");
+            TestRunnerInterface.Map.pageFactoryModel.SearchText("Books");
 
             //wait for page to load
             Libary.WaitForPageLoad(30);

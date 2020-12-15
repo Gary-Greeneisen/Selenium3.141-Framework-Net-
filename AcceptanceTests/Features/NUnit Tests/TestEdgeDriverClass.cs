@@ -8,9 +8,10 @@ using System.IO;
 //add Selenium files
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support;
-using OpenQA.Selenium.Edge;
+//using OpenQA.Selenium.Edge;
 using NUnit.Framework;
 using AcceptanceTests.Common.Library;
+using Microsoft.Edge.SeleniumTools;
 
 namespace AcceptanceTests.Features.NUnit_Tests
 {
@@ -46,12 +47,15 @@ namespace AcceptanceTests.Features.NUnit_Tests
             //********************************************************************************************
 
             var options = new EdgeOptions();
-            options.PageLoadStrategy = PageLoadStrategy.Eager;
+            options.PageLoadStrategy = PageLoadStrategy.Normal;
+            //options.UseChromium = true;
+            options.BinaryLocation = driverDir;
 
             //location of Edge driver
             //IWebDriver browser = new EdgeDriver(driverDir);  
             //IWebDriver browser = new EdgeDriver(driverDir,options);
             IWebDriver browser = new EdgeDriver(options);
+                            
             //driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(10));
 
             browser.Url = "http://www.google.com";

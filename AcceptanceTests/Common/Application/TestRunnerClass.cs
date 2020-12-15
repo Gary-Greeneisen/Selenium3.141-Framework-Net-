@@ -40,9 +40,9 @@ namespace AcceptanceTests.Common.Application
         //************************   
         public AdminPrograms adminPrograms = null;
         public CreditHoursTab creditHoursTab = null;
-        public GooglePageObjectModel googlePageObject = null;
         public HeaderPage headerPage = null;
         public LoginPage loginPage = null;
+        public PageFactoryModel pageFactoryModel = null;
         public ParentStudentTab parentStudentTab = null;
         public ProviderSearchPage providerSearchPage = null;
         public SafePage safePage = null;
@@ -72,9 +72,9 @@ namespace AcceptanceTests.Common.Application
             //************************
             adminPrograms = new AdminPrograms();
             creditHoursTab = new CreditHoursTab();
-            googlePageObject = new GooglePageObjectModel();
             headerPage = new HeaderPage();
             loginPage = new LoginPage();
+            pageFactoryModel = new PageFactoryModel();
             parentStudentTab = new ParentStudentTab();
             providerSearchPage = new ProviderSearchPage();
             safePage = new SafePage();
