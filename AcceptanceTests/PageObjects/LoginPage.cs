@@ -15,7 +15,8 @@ using OpenQA.Selenium.Support.UI;
 using AcceptanceTests.Config;
 using AcceptanceTests.Common.Library;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Edge;
+//using OpenQA.Selenium.Edge;
+using Microsoft.Edge.SeleniumTools;
 using NUnit.Framework;
 
 namespace AcceptanceTests.PageObjects
@@ -209,21 +210,24 @@ namespace AcceptanceTests.PageObjects
                     //Eager       2       Waits for pages to load and for ready state to be 'interactive' or 'complete'.
                     //None        3       Does not wait for pages to load, returning immediately.
                     //********************************************************************************************
-                    var edgeOptions = new EdgeOptions();
-                    edgeOptions.PageLoadStrategy = PageLoadStrategy.Normal;
+                    var options = new EdgeOptions();
+                    options.PageLoadStrategy = PageLoadStrategy.Normal;
+                    options.UseChromium = true;
+                    //options.BinaryLocation = driverDir;
 
                     //location of Edge driver
                     //IWebDriver browser = new EdgeDriver(driverDir);  
-                    //IWebDriver browser = new EdgeDriver(driverDir,options);
-                    browser = new EdgeDriver(edgeOptions);
+                    browser = new EdgeDriver(driverDir, options);
+                    //IWebDriver browser = new EdgeDriver(options);
+
                     //driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(10));
 
                     DefaultBrowserSize = browser.Manage().Window.Size;
                     //DefaultBrowserSize(Width, Height)
-                    //Width = 1236   Heigth = 856
+                    //Width = 1051   Heigth = 805
                     //set browser Height, Width
-                    // browserHeight = 865;
-                    //browserHWidth = 1236;
+                    browserHeight = 805;
+                    browserHWidth = 1051;
                     break;
 
                 default:

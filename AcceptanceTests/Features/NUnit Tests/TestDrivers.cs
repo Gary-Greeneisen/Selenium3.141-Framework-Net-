@@ -33,8 +33,8 @@ namespace AcceptanceTests.Features.NUnit_Tests
             TestFireFoxDriverClass TestFireFox = new TestFireFoxDriverClass();
             TestFireFox.TestFireFoxDriver();
 
-            //TestEdgeDriverClass TestEdge = new TestEdgeDriverClass();
-            //TestEdge.TestEdgeDriver();
+            TestEdgeDriverClass TestEdge = new TestEdgeDriverClass();
+            TestEdge.TestEdgeDriver();
 
             //TestIEDriverClass TestIE = new TestIEDriverClass();
             //TestIE.TestIEDriver();
