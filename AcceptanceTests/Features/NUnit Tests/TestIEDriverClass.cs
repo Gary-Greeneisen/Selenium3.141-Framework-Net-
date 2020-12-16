@@ -50,7 +50,8 @@ namespace AcceptanceTests.Features.NUnit_Tests
 
             IWebDriver browser = new InternetExplorerDriver(driverDir, ieOptions, System.TimeSpan.FromSeconds(60));
 
-            browser.Url = "http://www.google.com";
+            //browser.Url = "http://www.google.com";
+            browser.Navigate().GoToUrl("http://www.google.com");
 
             //Find the Search text box UI Element
             IWebElement element = browser.FindElement(By.Name("q"));
