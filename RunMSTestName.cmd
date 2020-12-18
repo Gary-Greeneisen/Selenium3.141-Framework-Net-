@@ -4,14 +4,12 @@ Color 07
 
 REM Set Environment Variables Used in the Batch File
 Set TargetDrive=C
-Set TargetDir=\Test2\Selenium3.0.1Project
+Set TargetDir=Test1
 
-Set VisualStudioVersion=14.0
-Set TestRoot="C:\Test2\Selenium3.0.1Project"
-set mstestPath="C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE"
-set testSettingsFilename=%TestRoot%\TestSettings.testsettings
-Set Env=""
+Set ProjectRoot="C:\Projects\Selenium3.141-Framework(Net)"
+Set TestResults="C:\Projects\Selenium3.141-Framework(Net)\TestResults"
 
+set mstestPath="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE"
 
 REM Switch To The Target Drive Location
 %TargetDrive%:
@@ -19,7 +17,7 @@ REM Switch To The Target Drive Location
 REM MD %TargetDir%
 CD %TargetDir%
 Echo.
-echo Starting Test(s) in %TargetDrive%:%TargetDir% 
+echo Starting Test(s) in %ProjectRoot%
 
 :StartTheTest
 Set TIME=%TIME:~0,8%
@@ -29,9 +27,9 @@ Echo.
 
 REM Run Test Using MSTest
 REM Delete the previous Test Results file
-if Exist %TestRoot%\TestResults\testResults.trx del %TestRoot%\TestResults\testResults.trx 
-REM %mstestPath%\MSTest.exe /testcontainer:%TestRoot%\AcceptanceTests\bin\Debug\AcceptanceTests.dll /test:GoogleSearchFeature /testsettings:%testSettingsFilename% /noisolation
-%mstestPath%\MSTest.exe /testcontainer:%TestRoot%\AcceptanceTests\bin\Debug\AcceptanceTests.dll /test:GoogleSearchFeature /testsettings:%testSettingsFilename% /resultsfile:%TestRoot%\TestResults\testResults.trx
+if Exist %ProjectRoot% del %ProjectRoot%\testResults.trx 
+REM %mstestPath%\MSTest.exe /testcontainer:%ProjectRoot%\AcceptanceTests\bin\Debug\AcceptanceTests.dll /test:GoogleSearchFeature 
+%mstestPath%\MSTest.exe /testcontainer:%ProjectRoot%\AcceptanceTests\bin\Debug\AcceptanceTests.dll /test:GoogleSearchFeature /resultsfile:%TestResults%\testResults.trx
 
 
 :TestEnd

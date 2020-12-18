@@ -10,8 +10,10 @@ using OpenQA.Selenium.Support.UI;
 using System.IO;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
-using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Remote;
+//using OpenQA.Selenium.Edge;
+using Microsoft.Edge.SeleniumTools;
+
 
 namespace AcceptanceTests.Steps
 {
@@ -61,23 +63,25 @@ namespace AcceptanceTests.Steps
                     // Implement FireFox using geckdriver file
                     //***************************************************************************************
                     // .Net 4.6 and NUnit 3.11.0 changed the way the project path is returned
-                    // projectDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+                    // driverDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
                     // You now have to use 
                     //TestContext.CurrentContext.TestDirectory;
                     //***************************************************************************************
                     //var parent = TestContext.CurrentContext.TestDirectory;
-                    //string projectDir = parent.Substring(0,parent.Length - 10);
-                    //var driverDir = projectDir + @"\packages\";
+                    //string driverDir = parent.Substring(0,parent.Length - 10);
+                    //var driverDir = driverDir + @"\packages\";
 
                     //Add framework packages dir to app.config
                     //var driverDir = @"C:\Test\Selenium3.141 Framework(Net)\packages\";
 
-                    // location of the geckdriver.exe file
+                    // location of the geckodriver.exe file
                     var driverService = FirefoxDriverService.CreateDefaultService(driverDir);
 
+                    //location of installed firefox.exe
                     driverService.FirefoxBinaryPath = @"C:\Program Files\Mozilla Firefox\firefox.exe";
                     driverService.HideCommandPromptWindow = true;
                     driverService.SuppressInitialDiagnosticInformation = true;
+
                     browser = new FirefoxDriver(driverService, new FirefoxOptions(), TimeSpan.FromSeconds(60));
 
                     var url = "http://" + page;
@@ -89,17 +93,23 @@ namespace AcceptanceTests.Steps
 
                     //***************************************************************************************
                     // .Net 4.6 and NUnit 3.11.0 changed the way the project path is returned
-                    // projectDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+                    // driverDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
                     // You now have to use 
                     //TestContext.CurrentContext.TestDirectory;
                     //***************************************************************************************
                     //var parent = TestContext.CurrentContext.TestDirectory;
-                    //string projectDir = parent.Substring(0,parent.Length - 10);
-                    //var driverDir = projectDir + @"\packages\";
+                    //string driverDir = parent.Substring(0,parent.Length - 10);
+                    //var driverDir = driverDir + @"\packages\";
 
                     //Add framework packages dir to app.config
                     //var driverDir = @"C:\Test\Selenium3.141 Framework(Net)\packages\";
-                    browser = new ChromeDriver(driverDir);
+
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.AddArguments("disable-infobars");
+
+                    //dir to the Chrome driver
+                    //browser = new ChromeDriver(driverDir);
+                    browser = new ChromeDriver(driverDir, chromeOptions);
 
                     url = "http://" + page;
                     browser.Navigate().GoToUrl(url);
@@ -115,28 +125,39 @@ namespace AcceptanceTests.Steps
                     break;
 
                 case "EDGE":
+                    // location for MicrosoftWebDriver.exe
 
                     //***************************************************************************************
                     // .Net 4.6 and NUnit 3.11.0 changed the way the project path is returned
-                    // projectDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+                    // driverDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
                     // You now have to use 
                     //TestContext.CurrentContext.TestDirectory;
                     //***************************************************************************************
                     //var parent = TestContext.CurrentContext.TestDirectory;
-                    //string projectDir = parent.Substring(0,parent.Length - 10);
-                    //var driverDir = projectDir + @"\packages\";
+                    //string driverDir = parent.Substring(0,parent.Length - 10);
+                    //var driverDir = driverDir + @"\packages\";
 
                     //Add framework packages dir to app.config
                     //var driverDir = @"C:\Test\Selenium3.141 Framework(Net)\packages\";
 
-                    //********************************************
+                    //********************************************************************************************
                     //Member name Value Description
                     //Default     0       Indicates the behavior is not set.
                     //Normal      1       Waits for pages to load and ready state to be 'complete'.
                     //Eager       2       Waits for pages to load and for ready state to be 'interactive' or 'complete'.
                     //None        3       Does not wait for pages to load, returning immediately.
-                    //*********************************************
-                    browser = new EdgeDriver(driverDir);
+                    //********************************************************************************************
+                    var options = new EdgeOptions();
+                    options.PageLoadStrategy = PageLoadStrategy.Normal;
+                    options.UseChromium = true;
+                    //options.BinaryLocation = driverDir;
+
+                    //location of Edge driver
+                    //IWebDriver browser = new EdgeDriver(driverDir);  
+                    browser = new EdgeDriver(driverDir, options);
+                    //IWebDriver browser = new EdgeDriver(options);
+
+                    //driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(10));
 
                     url = "http://" + page;
                     browser.Navigate().GoToUrl(url);
