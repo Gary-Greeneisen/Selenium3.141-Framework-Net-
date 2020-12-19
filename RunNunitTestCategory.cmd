@@ -7,10 +7,11 @@ Set TargetDrive=C
 Set TargetDir=\Test2\Selenium3.0.1Project
 
 Set VisualStudioVersion=14.0
-Set TestRoot="C:\Test2\Selenium3.0.1Project"
-set nunitPath="C:\Program Files (x86)\NUnit 2.6.4\bin"
+Set TestRoot="C:\Projects\Selenium3.141-Framework(Net)"
 set testSettingsFilename=%TestRoot%\TestSettings.testsettings
 Set Env=""
+
+set nunitPath="C:\Program Files (x86)\NUnit 2.6.4\bin"
 
 
 REM Switch To The Target Drive Location

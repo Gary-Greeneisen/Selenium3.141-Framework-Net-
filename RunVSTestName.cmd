@@ -1,5 +1,5 @@
 @@echo off
-REM filename RunVSTestCategory.cmd
+REM filename RunVSTestName.cmd
 Color 07
 
 Set ProjectRootDir="C:\Projects\Selenium3.141-Framework(Net)"
@@ -26,11 +26,11 @@ REM Delete the previous Test Results file
 if Exist %TestResults%\*.trx del %TestResults%\*.trx 
 
 REM Run Test Using VSTest
-rem *****************************************************************************************
-rem /TestCaseFilter:"TestCategory=GoogleSearchFeature" is the Feature name in Test Explorer
-rem *****************************************************************************************
-%vstestPath%\vstest.console.exe %ProjectRootDir%\AcceptanceTests\bin\Debug\AcceptanceTests.dll /TestCaseFilter:"TestCategory=GoogleSearchFeature" /logger:trx;LogFileName=TestResults.trx /InIsolation
+Rem Run seperate multiple Unit Tests with a (,) comma
+%vstestPath%\vstest.console.exe %ProjectRootDir%\AcceptanceTests\bin\Debug\AcceptanceTests.dll /Tests:TestBrowserDrivers,TestIEDriver /logger:trx;LogFileName=TestResults.trx /InIsolation
 
+Rem Run Cucumber Specflow test, log results into a Visual Studio Test Results File (TRX) 
+%vstestPath%\vstest.console.exe %ProjectRootDir%\AcceptanceTests\bin\Debug\AcceptanceTests.dll /Tests:GoogleSearchFeature /logger:trx  /InIsolation
 
 :TestEnd
 Set TIME=%TIME:~0,8%

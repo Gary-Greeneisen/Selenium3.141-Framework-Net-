@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcceptanceTests", "AcceptanceTests\AcceptanceTests.csproj", "{8C151353-A16B-4E22-B7C8-94D9903267EA}"
 EndProject
@@ -19,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		RunNunitTestCategory.cmd = RunNunitTestCategory.cmd
 		RunSpecflowTests.cmd = RunSpecflowTests.cmd
 		RunVSTestCategory.cmd = RunVSTestCategory.cmd
+		RunVSTestName.cmd = RunVSTestName.cmd
 		TestResult.html = TestResult.html
 		TestSettings.testsettings = TestSettings.testsettings
 	EndProjectSection
