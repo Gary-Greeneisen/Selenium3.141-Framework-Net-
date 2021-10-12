@@ -27,7 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "packages", "packages", "{A8850BC7-C206-4533-A828-7A1E69D0E51D}"
 	ProjectSection(SolutionItems) = preProject
-		packages\ReadMePackages.txt = packages\ReadMePackages.txt
+		ReadMePackages.txt = ReadMePackages.txt
 	EndProjectSection
 EndProject
 Global
